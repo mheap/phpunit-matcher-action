@@ -12,7 +12,7 @@ To configure these matchers, add the following step to your workflow YAML file b
 
 ```yaml
 - name: Configure matchers
-  uses: mheap/phpunit-problem-matchers-action@master
+  uses: mheap/phpunit-matcher-action@master
 ```
 
 Here's a complete workflow example (located at `.github/workflows/phpunit.yml`) that runs your tests and adds annotations for failures
@@ -28,7 +28,7 @@ jobs:
     - name: Composer dependencies
       run: composer install --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
     - name: Configure matchers
-      uses: mheap/phpunit-problem-matchers-action@master
+      uses: mheap/phpunit-matcher-action@master
     - name: Run Tests
       run: ./vendor/bin/phpunit --teamcity test
 ```
