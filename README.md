@@ -24,11 +24,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Composer dependencies
       run: composer install --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
     - name: Configure matchers
-      uses: mheap/phpunit-matcher-action@master
+      uses: mheap/phpunit-matcher-action@v1
     - name: Run Tests
       run: ./vendor/bin/phpunit --teamcity test
 ```
