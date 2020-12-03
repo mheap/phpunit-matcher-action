@@ -12,7 +12,7 @@ To configure these matchers, add the following step to your workflow YAML file b
 
 ```yaml
 - name: Configure matchers
-  uses: mheap/phpunit-matcher-action@master
+  uses: mheap/phpunit-matcher-action@v1
 ```
 
 Here's a complete workflow example (located at `.github/workflows/phpunit.yml`) that runs your tests and adds annotations for failures
