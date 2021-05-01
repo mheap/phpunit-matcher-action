@@ -17,7 +17,7 @@ for (let matcher in matchers) {
         "owner": matcher,
         "severity": details.defaultSeverity,
         "pattern": [{
-          "regexp": details.regexp.replace("{{GITHUB_WORKSPACE}}", process.env.GITHUB_WORKSPACE.replaceAll('/', '\\/') || ''),
+          "regexp": details.regexp.replace("{{GITHUB_WORKSPACE}}", process.env.GITHUB_WORKSPACE.replace(/\//g, '\\/') || ''),
           "message": details.message,
           "file": details.file,
           "line": details.line
