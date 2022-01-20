@@ -25,6 +25,9 @@ for (let matcher in matchers) {
       }]
     }
 
+  if (!fs.existsSync(".github")) {
+    fs.mkdirSync(".github");
+  }
   fs.writeFileSync(`.github/${matcher}.json`, JSON.stringify(problemMatcher));
   console.log(`::add-matcher::.github/${matcher}.json`);
 }
