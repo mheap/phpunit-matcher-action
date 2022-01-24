@@ -33,6 +33,15 @@ jobs:
       run: ./vendor/bin/phpunit --teamcity test
 ```
 
+If you run your tests in a container and the Teamcity output will have a different base path, you can specify it using the `root_folder` input:
+
+```yaml
+- name: Configure matchers
+  uses: mheap/phpunit-matcher-action@v1
+  with:
+    base_path: /path/to/other/folder
+```
+
 ## How this works
 
 [Problem matchers](https://github.com/actions/toolkit/blob/master/docs/problem-matchers.md) work by defining a regular expression to extract information such as the file, line number and severity from any output logs. Each matcher has to be registered with Github Actions by adding `::add-matcher::/path/to/matcher.json` to the output.

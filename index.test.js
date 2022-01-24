@@ -55,3 +55,22 @@ describe("with default GITHUB_WORKSPACE", () => {
     expect(fs.mkdirSync).not.toBeCalled();
   });
 });
+
+describe("with a custom base path", () => {
+  beforeEach(() => {
+    restore = mockedEnv({
+      INPUT_BASE_PATH: "/path/to/tests/in/container",
+    });
+  });
+
+  test("replaces {{ github_workspace }} correctly", () => {
+    jest.spyOn(fs, "existsSync").mockImplementation(() => true);
+    jest.spyOn(fs, "writeFileSync").mockImplementation();
+    jest.spyOn(console, "log").mockImplementation();
+    run();
+    expect(fs.writeFileSync).toBeCalledWith(
+      ".github/phpunit-failure.json",
+      '{"problemMatcher":[{"owner":"phpunit-failure","severity":"error","pattern":[{"regexp":"##teamcity\\\\[testFailed.+message=\'(.+)\'.+details=\'\\\\s+/path/to/tests/in/container/([^:]+):(\\\\d+)[^\']+\'","message":1,"file":2,"line":3}]}]}'
+    );
+  });
+});
