@@ -33,7 +33,7 @@ jobs:
       run: ./vendor/bin/phpunit --teamcity test
 ```
 
-If you run your tests in a container and the Teamcity output will have a different base path, you can specify it using the `root_folder` input:
+If you run your tests in a container and the Teamcity output will have a different base path, you can specify it using the `base_path` input:
 
 ```yaml
 - name: Configure matchers
