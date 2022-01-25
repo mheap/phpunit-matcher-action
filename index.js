@@ -1,6 +1,8 @@
 const fs = require("fs");
 
 module.exports = function () {
+  const workspaceRoot =
+    process.env.INPUT_BASE_PATH || process.env.GITHUB_WORKSPACE || "";
   const matchers = {
     "phpunit-failure": {
       regexp:
@@ -23,7 +25,7 @@ module.exports = function () {
             {
               regexp: details.regexp.replace(
                 "{{GITHUB_WORKSPACE}}",
-                process.env.GITHUB_WORKSPACE || ""
+                workspaceRoot
               ),
               message: details.message,
               file: details.file,

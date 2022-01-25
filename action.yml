@@ -1,9 +1,13 @@
-name: 'PHPUnit Problem Matchers'
-author: 'Michael Heap'
-description: 'Adds problem matcher for PHPUnit'
+name: "PHPUnit Problem Matchers"
+author: "Michael Heap"
+description: "Adds problem matcher for PHPUnit"
 runs:
-  using: 'node12'
-  main: 'index.js'
+  using: "node12"
+  main: "index.js"
 branding:
-  icon: 'list'
-  color: 'green'
+  icon: "list"
+  color: "green"
+inputs:
+  base_path:
+    description: "The base path to strip from your test output to leave just relative paths"
+    required: false
