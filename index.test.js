@@ -1,7 +1,8 @@
 const mockedEnv = require("mocked-env");
 const fs = require("fs");
 
-const run = require(".");
+const index = require(".");
+const run = index.run;
 
 let restore;
 afterEach(() => {
