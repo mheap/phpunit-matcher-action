@@ -3,7 +3,7 @@ const fs = require("fs");
 const matchers = {
   "phpunit-failure": {
     regexp:
-      "##teamcity\\[testFailed.+message='(.+)'.+details='\\s*{{GITHUB_WORKSPACE}}/([^:]+):(\\d+)[^']+'",
+      "##teamcity\\[testFailed.+message='(.+)'.+details='(?:\\s|\\|n\\s)*(?:.+\\|n[^'])?{{GITHUB_WORKSPACE}}/([^:]+):(\\d+)[^']+'",
     defaultSeverity: "error",
     message: 1,
     file: 2,
