@@ -2,9 +2,9 @@
 
 This action uses the built in PHPUnit `--teamcity` formatter to add annotations to your Github Actions builds.
 
-![PHPUnit Action Matcher Logs Example](https://github.com/mheap/phpunit-matcher-action/blob/master/phpunit-matcher-logs.png?raw=true)
+![PHPUnit Action Matcher Logs Example](https://raw.githubusercontent.com/mheap/phpunit-matcher-action/main/phpunit-matcher-logs.png)
 
-![PHPUnit Action Matcher Context Example](https://github.com/mheap/phpunit-matcher-action/blob/master/phpunit-matcher-context.png?raw=true)
+![PHPUnit Action Matcher Context Example](https://raw.githubusercontent.com/mheap/phpunit-matcher-action/main/phpunit-matcher-context.png)
 
 ## Usage
 
