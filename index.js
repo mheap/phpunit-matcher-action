@@ -1,8 +1,20 @@
 const fs = require("fs");
 
-module.exports = function () {
+const matchers = {
+  "phpunit-failure": {
+    regexp:
+      "##teamcity\\[testFailed.+message='(.+)'.+details='(?:\\s|\\|n\\s)*(?:.+\\|n[^'])?{{GITHUB_WORKSPACE}}/([^:]+):(\\d+)[^']+'",
+    defaultSeverity: "error",
+    message: 1,
+    file: 2,
+    line: 3,
+  },
+};
+
+function run() {
   const workspaceRoot =
     process.env.INPUT_BASE_PATH || process.env.GITHUB_WORKSPACE || "";
+
   const matchers = {
     "phpunit-failure": {
       regexp:
@@ -43,8 +55,13 @@ module.exports = function () {
     fs.writeFileSync(`.github/${matcher}.json`, JSON.stringify(problemMatcher));
     console.log(`::add-matcher::.github/${matcher}.json`);
   }
-};
+}
 
 if (require.main === module) {
-  module.exports();
+  run();
 }
+
+module.exports = {
+  matchers,
+  run,
+};
