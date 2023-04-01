@@ -33,8 +33,7 @@ describe("with default GITHUB_WORKSPACE", () => {
     run();
     expect(fs.writeFileSync).toBeCalledWith(
       ".github/phpunit-failure.json",
-      '{"problemMatcher":[{"owner":"phpunit-failure","severity":"error","pattern":[{"regexp":"##teamcity\\\\[testFailed.+message=\'(.+)\'.+details=\'\\\\s+/github/workspace/([^:]+):(\\\\d+)[^\']+\'","message":1,"file":2,"line":3}]}]}'
-    );
+      `{"problemMatcher":[{"owner":"phpunit-failure","severity":"error","pattern":[{"regexp":"##teamcity\\\\[testFailed.+message='(.+)'.+details='(?:\\\\s|\\\\|n\\\\s)*(?:.+\\\\|n[^'])?/github/workspace/([^:]+):(\\\\d+)[^']+'","message":1,"file":2,"line":3}]}]}`    );
   });
 
   test("creates the .github directory if it doesn't exist", () => {
@@ -70,7 +69,6 @@ describe("with a custom base path", () => {
     run();
     expect(fs.writeFileSync).toBeCalledWith(
       ".github/phpunit-failure.json",
-      '{"problemMatcher":[{"owner":"phpunit-failure","severity":"error","pattern":[{"regexp":"##teamcity\\\\[testFailed.+message=\'(.+)\'.+details=\'\\\\s+/path/to/tests/in/container/([^:]+):(\\\\d+)[^\']+\'","message":1,"file":2,"line":3}]}]}'
-    );
+      `{"problemMatcher":[{"owner":"phpunit-failure","severity":"error","pattern":[{"regexp":"##teamcity\\\\[testFailed.+message='(.+)'.+details='(?:\\\\s|\\\\|n\\\\s)*(?:.+\\\\|n[^'])?/path/to/tests/in/container/([^:]+):(\\\\d+)[^']+'","message":1,"file":2,"line":3}]}]}`    );
   });
 });
