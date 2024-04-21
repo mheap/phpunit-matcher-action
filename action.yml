@@ -2,7 +2,7 @@ name: "PHPUnit Problem Matchers"
 author: "Michael Heap"
 description: "Adds problem matcher for PHPUnit"
 runs:
-  using: "node16"
+  using: "node20"
   main: "index.js"
 branding:
   icon: "list"
