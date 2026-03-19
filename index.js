@@ -9,22 +9,29 @@ const matchers = {
     file: 2,
     line: 3,
   },
+  "php-native-error": {
+    regexp:
+      "##teamcity\\[testFailed.+message='Test code or tested code printed unexpected output:(?:\\s|\\|n\\s)*(.*error):\\s+(.+) in {{GITHUB_WORKSPACE}}/(.+) on line (\\d+)",
+    defaultSeverity: "error",
+    code: 1,
+    message: 2,
+    file: 3,
+    line: 4,
+  },
+  "php-native-warning": {
+    regexp:
+      "##teamcity\\[testFailed.+message='Test code or tested code printed unexpected output:(?:\\s|\\|n\\s)*(.*Warning|.*Deprecated|.*Notice):\\s+(.+) in {{GITHUB_WORKSPACE}}/(.+) on line (\\d+)",
+    defaultSeverity: "warning",
+    code: 1,
+    message: 2,
+    file: 3,
+    line: 4,
+  },    
 };
 
 function run() {
   const workspaceRoot =
     process.env.INPUT_BASE_PATH || process.env.GITHUB_WORKSPACE || "";
-
-  const matchers = {
-    "phpunit-failure": {
-      regexp:
-        "##teamcity\\[testFailed.+message='(.+)'.+details='(?:\\s|\\|n\\s)*(?:.+\\|n[^'])?{{GITHUB_WORKSPACE}}/([^:]+):(\\d+)[^']+'",
-      defaultSeverity: "error",
-      message: 1,
-      file: 2,
-      line: 3,
-    },
-  };
 
   for (let matcher in matchers) {
     const details = matchers[matcher];
