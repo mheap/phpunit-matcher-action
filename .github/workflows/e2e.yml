@@ -1,0 +1,15 @@
+name: E2E Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Configure matchers (local action)
+        uses: ./
+      - name: Emit TeamCity sample output
+        run: |
+          echo "##teamcity[testFailed name='Example::testOne' message='Example failure' details=' |n /home/runner/work/phpunit-matcher-action/phpunit-matcher-action/tests/ExampleTest.php:123 |n ']"
