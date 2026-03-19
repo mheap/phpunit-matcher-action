@@ -6,6 +6,10 @@ This action uses the built in PHPUnit `--teamcity` formatter to add annotations 
 
 ![PHPUnit Action Matcher Context Example](https://raw.githubusercontent.com/mheap/phpunit-matcher-action/main/phpunit-matcher-context.png)
 
+## Requirements
+
+- Node.js 24 for local development/testing.
+
 ## Usage
 
 To configure these matchers, add the following step to your workflow YAML file before running PHPUnit with the `--teamcity` flag.
